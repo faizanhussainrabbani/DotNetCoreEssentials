@@ -1,6 +1,26 @@
-<body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
+<!-- nav -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" routerLink="/">Home</a>
+        <a class="navbar-brand" routerLink="/reviews">Reviews</a>
+        <span *ngIf="currentUser">
+          <a class="navbar-brand" (click)="logout()">Logout</a>
+        </span>
+        <span *ngIf="!currentUser">
+            <a class="navbar-brand" routerLink="/login">Login</a>
+        </span>        
+    </div>
   </div>
-</body>
+</nav>
+
+<!-- main content container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-8 offset-sm-2">
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>
+</div>
