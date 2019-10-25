@@ -11,7 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { appRoutingModule } from './app.routing';
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-// import { TodolistComponent } from './todolist/todolist.component';
+import { TodolistComponent } from './todolist/todolist.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { NgbPaginationModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,7 +21,7 @@ import { NgbPaginationModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    // TodolistComponent,
+    TodolistComponent,
     ReviewListComponent
   ],
   imports: [
