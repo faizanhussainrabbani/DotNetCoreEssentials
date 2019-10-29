@@ -7,7 +7,8 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./review-list.component.css']
 })
 export class ReviewListComponent implements OnInit {
-  reviews = [];
+  // reviews = [];
+  reviews: Review[];
   currentUser: any;
   currentPage = 1;
   itemsPerPage = 3;
@@ -15,16 +16,25 @@ export class ReviewListComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private reviewService: ReviewService) {
-      this.currentUser = this.authenticationService.currentUserValue;
-     }
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
 
   ngOnInit() {
     this.loadAllReviews();
   }
+  // private loadAllReviews() {
+  //   this.reviewService.getAllReviews()
+  //     .pipe(first())
+  //     .subscribe(reviews => this.reviews = reviews);
+  // }
   private loadAllReviews() {
     this.reviewService.getAllReviews()
-        .pipe(first())
-        .subscribe(reviews => this.reviews = reviews);
+      .pipe(first())
+      .subscribe(reviews => {
+        this.reviews = reviews;
+        console.log(reviews);
+      },
+        error => console.error(error));
   }
 
   public onPageChange(pageNum: number): void {
@@ -32,6 +42,6 @@ export class ReviewListComponent implements OnInit {
   }
 
   public changePagesize(num: number): void {
-  this.itemsPerPage = this.pageSize + num;
+    this.itemsPerPage = this.pageSize + num;
   }
 }

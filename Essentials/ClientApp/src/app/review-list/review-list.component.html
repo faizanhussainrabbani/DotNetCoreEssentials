@@ -2,7 +2,7 @@
 <span *ngIf="reviews?.length > 0; else noReviewBlock">
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let review of reviews | slice: pageSize | slice: 0:itemsPerPage">
-        Review: {{review.review}} <br> Rating: {{review.rating}} By: {{review.user}}
+        Review: {{review.description}} <br> Rating: {{review.rating}} By: {{review.author}}
         </li>
     </ul>
     <ngb-pagination
@@ -15,4 +15,3 @@
 <ng-template #noReviewBlock>
     No reviews entered yet! <span *ngIf="!currentUser"><a routerLink="/login"> Click here</a> to login/register</span> 
 </ng-template>
-
